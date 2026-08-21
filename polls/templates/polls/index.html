@@ -1,0 +1,22 @@
+{% extends "polls/base.html" %}
+
+{% block title %}записи{% endblock %}
+
+
+{%block main%}
+<main class="glav">
+    <section class="posts">
+        <h2 class="posts__title">Записи</h2>
+        {% for post in posts%}
+        <article class="post-card">
+
+            <h3 class="post-card__title">{{ post.title }}</h3>
+
+            <p class="post-card__date">{{ post.create_date|date:"d.m.y h:i" }}</p>
+            <p class="post-card__text">{{ post.text|truncatewords:30 }}</p>
+            <a class="post-card__link" href="{% url 'post_detail' post.id %}">Читать далее</a>
+        </article>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

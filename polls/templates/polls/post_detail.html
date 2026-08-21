@@ -1,0 +1,27 @@
+{% extends "polls/base.html"%}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block main%}
+<main class="glav_post">
+    <article class="post">
+        <h1>{{post.title}}</h1>
+        <p class="full_date">{{ post.create_date|date:"d.m.Y H:i" }}</p>
+        <div class="full_context">{{ post.text }}</div>
+
+        <div class="post_img">
+            {% for photo in post.images.all %}
+            <figure>
+                <img src="{{ photo.image.url }}" alt="{{ photo.caption }}">
+                
+                {% if photo.caption %}
+                    <figcaption>{{ photo.caption }}</figcaption>
+                {% endif %}
+
+            </figure>
+            {% endfor %}
+        </div>
+
+    </article>
+</main>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'polls/style.css' %}" rel="stylesheet" type="text/css"/>
+    <title>{% block title%}{% endblock %}</title>
+</head>
+<body>
+    
+<header class="site-header">  
+    <div class="container">    
+        <nav class="menu">      
+            <a class="menu__link" href="{% url 'new_post' %}">Новые</a>     
+            <a class="menu__link" href="{% url 'index'%}">Записи</a> 
+            <a class="menu__link" href="{% url 'creator'%}">О создателе</a>  
+        </nav>  
+    </div>
+</header>
+
+{% block main %} {% endblock %}
+
+<footer class="pod">
+    2026 COCKA_@23
+</footer>
+
+</body>
+</html>

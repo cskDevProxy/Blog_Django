@@ -1,0 +1,241 @@
+/* Базовый шаблон */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background:  #0f1218;
+}
+
+.site-header {
+    background: #0F111A;
+    padding: 15px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu__link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.menu__link:hover {
+    color: #4CAF50;
+}
+
+.glav {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.pod {
+    background: #10141D;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+}
+
+
+/* Запись */
+.posts__title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.post-card {
+    background: #161b24;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.07);
+    transition: box-shadow .25s transform .25s;
+}
+
+.post-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.post-card__title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #cccccc;
+}
+
+.post-card__date {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.post-card__text {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #b9c0cc;
+    word-wrap: break-word;
+}
+
+.post-card__link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background: #4CAF50;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.post-card__link:hover {
+    background: #43a047;
+}
+
+/* Развёрнутая запись(полная) */
+
+.glav_post {
+    flex: 1;                    /* растягиваем, чтобы подвал был прижат */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 16px;
+    color: #161b24;
+}
+
+.post {
+    width: 100%;
+    max-width: 900px;
+    background: #161b24;
+    border-radius: 8px;
+    padding: 20px 25px;
+}
+
+.post h1 {
+    margin: 0 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #cccccc;
+}
+
+.full_date {
+    margin: 0 0 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e3e3e8;
+    color: #8a8a92;
+    font-size: 14px;
+}
+
+.full_context {
+    line-height: 1.6;
+    white-space: pre-wrap;      /* сохраняет переносы строк текста */
+    word-wrap: break-word;
+    font-size: 17px;
+    color: #b9c0cc;
+}
+
+.post_img {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, ninmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.post_img figure {
+    margin: 0;
+}
+
+.post_img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.post_img figcaption {
+    margin-top: 6px;
+    color: #666;
+    font-size: 14px;
+    display: flex;
+}
+
+/* Создатель */
+
+.creator_body {
+    margin: 0; 
+    min-height: 100vh;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    background: #0f1218; 
+    color: #e8e8e8;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.card {
+    max-width: 480px; 
+    margin: 20px; 
+    padding: 32px; text-align: center;
+    background: #161b24; 
+    border: 1px solid #2a3040; 
+    border-radius: 16px;
+}
+
+.avatar {
+    width: 140px;
+    height: 140px; 
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 3px solid #46f07f;
+}
+
+h1 { 
+    margin: 16px 0 4px; 
+    font-size: 26px; 
+}
+  
+.tag { 
+    color: #46f07f; 
+    font-size: 14px; 
+    margin-bottom: 12px; 
+}
+  
+p { 
+    line-height: 1.6; 
+    color: #b9c0cc; 
+}
+
+.btn {
+    display: inline-block; 
+    margin: 6px 4px 0; 
+    padding: 10px 22px;
+    border: 1px solid #46f07f; 
+    border-radius: 8px;
+    color: #46f07f; 
+    text-decoration: none; 
+    transition: .2s;
+}
+.btn:hover { 
+    background: #46f07f; 
+    color: #0f1218; 
+}
+

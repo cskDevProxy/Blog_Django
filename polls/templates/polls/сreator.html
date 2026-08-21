@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'polls/style.css' %}" rel="stylesheet" type="text/css"/>
+    <title>Создатель</title>
+</head>
+<body class="creator_body">
+
+<div class="card">
+    <img class="avatar" src="{% static 'polls/avatar.jpg' %}" alt="моя аватарка">
+    <h1>Рома</h1>
+    <div class="tag">информационная безопасность</div>
+    <p>
+    Меня зовут Рома, полных 19 лет. Учусь на специалиста по информационной безопасности.
+    Занимаюсь программированием, изучением сетей, а также Linux на серверной части.
+    </p>
+    <a class="btn" href="https://github.com/COCKA23" target="_blank">GitHub</a>
+    <a class="btn" href="https://t.me/@COCKA_23" target="_blank">Telegram</a>
+</div>
+
+</body>
+</html>
