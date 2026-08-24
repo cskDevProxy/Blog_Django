@@ -1,4 +1,6 @@
 from django.db import models
+from .utils import rename_photo
+
 
 # Модель записи 
 class Post(models.Model):
@@ -20,7 +22,7 @@ class PostImage(models.Model):
         related_name = "images"
     )
 
-    image = models.ImageField(upload_to = "posts/images/")
+    image = models.ImageField(upload_to = rename_photo)
     caption = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
