@@ -1,27 +1,39 @@
-{% extends "polls/base.html"%}
+{% extends "polls/base.html" %}
+{% load static %}
 
-{% block title %} {{ post.title }} {% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
-{% block main%}
+
+{% block main %}
 <main class="glav_post">
     <article class="post">
-        <h1>{{post.title}}</h1>
-        <p class="full_date">{{ post.create_date|date:"d.m.Y H:i" }}</p>
+        <h1>{{ post.title }}</h1>
+        <p class="full_date">{{ post.created_date|date:"d.m.Y H:i" }}</p>
         <div class="full_context">{{ post.text }}</div>
 
         <div class="post_img">
             {% for photo in post.images.all %}
-            <figure>
-                <img src="{{ photo.image.url }}" alt="{{ photo.caption }}">
-                
+            
+            <div class="gallery-item">
+                <img src="{{ photo.image.url }}"
+                     alt="{{ photo.caption }}"
+                     onclick="openLightbox(this.src)">
+
                 {% if photo.caption %}
                     <figcaption>{{ photo.caption }}</figcaption>
                 {% endif %}
 
-            </figure>
+            </div>
             {% endfor %}
-        </div>
 
+        </div>
     </article>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" class="lightbox-content">
+    </div>
+
 </main>
+
+<script src="{% static 'polls/js/gallery.js' %}"></script>
 {% endblock %}

@@ -4,12 +4,15 @@ from .utils import rename_photo
 
 # Модель записи 
 class Post(models.Model):
+    STATUS_LIST = [('draft', 'Черновик'), ('published', 'Опубликовано')]
+
     title = models.CharField(max_length=200)
     text = models.TextField()
-    create_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=30, blank=False ,choices=STATUS_LIST, default='draft' )
 
     class Meta:        
-        ordering = ["-create_date"]
+        ordering = ["-created_date"]
 
     def __str__(self):
         return self.title
@@ -28,3 +31,4 @@ class PostImage(models.Model):
     def __str__(self):
         return f"Фото для: {self.post.title}"
 
+# Новость

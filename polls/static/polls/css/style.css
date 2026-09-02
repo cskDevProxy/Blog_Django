@@ -15,7 +15,7 @@ body {
 }
 
 .site-header {
-    background: #0F111A;
+    background: #10141D;
     padding: 15px 0;
 }
 
@@ -114,7 +114,7 @@ body {
 /* Развёрнутая запись(полная) */
 
 .glav_post {
-    flex: 1;                    /* растягиваем, чтобы подвал был прижат */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -147,7 +147,7 @@ body {
 
 .full_context {
     line-height: 1.6;
-    white-space: pre-wrap;      /* сохраняет переносы строк текста */
+    white-space: pre-wrap;
     word-wrap: break-word;
     font-size: 17px;
     color: #b9c0cc;
@@ -155,28 +155,58 @@ body {
 
 .post_img {
     display: grid;
-    grid-template-columns: repeat(auto-fit, ninmax(220px, 1fr));
-    gap: 16px;
-    margin-top: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 20px;
 }
 
-.post_img figure {
-    margin: 0;
+.post_img .gallery-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.post_img div {
+    display: flex;
+    flex-direction: column;
 }
 
 .post_img img {
-    display: block;
     width: 100%;
     height: auto;
     border-radius: 8px;
+    object-fit: contain;
+    text-align: center;
 }
 
 .post_img figcaption {
     margin-top: 6px;
-    color: #666;
+    color: #8a8a92;
     font-size: 14px;
-    display: flex;
+    text-align: center;
 }
+
+.lightbox {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: zoom-out;
+}
+
+.lightbox-content {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
 
 /* Создатель */
 
