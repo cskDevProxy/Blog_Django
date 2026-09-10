@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
 from .models import Post
+from .models import News
+from .models import PostFile
 
 
 # Главная страница
@@ -22,3 +24,9 @@ def new_post(request):
 # О создателе
 def creator(request):
     return render(request, "polls/сreator.html")
+
+# Новости
+def news(request):
+    news = News.objects.all().order_by("-news_date")[:5]
+    return render(request, 'polls/news.html', {'news':news})
+

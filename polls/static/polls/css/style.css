@@ -1,4 +1,4 @@
-/* Базовый шаблон */
+/* base.html базовый шаблон */
 
 * {
     margin: 0;
@@ -58,7 +58,7 @@ body {
 }
 
 
-/* Запись */
+/* index.html & new_post.html запись */
 .posts__title {
     font-size: 28px;
     margin-bottom: 30px;
@@ -111,7 +111,7 @@ body {
     background: #43a047;
 }
 
-/* Развёрнутая запись(полная) */
+/* post_detail.html развёрнутая запись(полная) */
 
 .glav_post {
     flex: 1;
@@ -207,8 +207,11 @@ body {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
 }
 
+.post_files {
+    margin: 15px 0;
+}
 
-/* Создатель */
+/* сreator.html cоздатель  */
 
 .creator_body {
     margin: 0; 
@@ -269,3 +272,38 @@ p {
     color: #0f1218; 
 }
 
+/* news.html новости  */
+
+.news {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.news_str {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.news_card {
+    background: #161b24;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.07);
+    transition: box-shadow .25s transform .25s;
+}
+
+.news_card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.news_title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #cccccc;
+}

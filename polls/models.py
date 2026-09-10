@@ -1,5 +1,5 @@
 from django.db import models
-from .utils import rename_photo
+from .utils import rename_photo, rename_file
 
 
 # Модель записи 
@@ -19,6 +19,7 @@ class Post(models.Model):
 
 # Фото к записи
 class PostImage(models.Model):
+    # связь с постами
     post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
@@ -32,3 +33,24 @@ class PostImage(models.Model):
         return f"Фото для: {self.post.title}"
 
 # Новость
+class News(models.Model):
+    news_text = models.TextField()
+    news_date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.news_text
+
+# Файлы
+class PostFile(models.Model):
+
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name="files"
+    )
+
+    file = models.FileField(upload_to= rename_file)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.name} для: {self.post.title}"

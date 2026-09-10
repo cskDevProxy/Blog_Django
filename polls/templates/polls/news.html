@@ -1,0 +1,23 @@
+{% extends "polls/base.html" %}
+
+{% load static %}
+
+
+{% block title%}Новости{% endblock %}
+
+
+{% block main %}
+<main class="news">
+    <section class="posts">
+        <h2 class="news_str">Новости</h2>
+        {% for new in news %}
+
+        <article class="news_card">
+            <h4 class="news_title">{{ new.news_text }}</h4>
+            <p class="post-card__date">{{ new.news_date|date:"d.m.y h:i" }}</p>
+        </article>
+
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

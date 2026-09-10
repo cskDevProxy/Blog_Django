@@ -8,7 +8,7 @@
 <main class="glav_post">
     <article class="post">
         <h1>{{ post.title }}</h1>
-        <p class="full_date">{{ post.created_date|date:"d.m.Y H:i" }}</p>
+        <p class="full_date">{{ post.created_date|date:"d.m.Y h:i" }}</p>
         <div class="full_context">{{ post.text }}</div>
 
         <div class="post_img">
@@ -18,15 +18,21 @@
                 <img src="{{ photo.image.url }}"
                      alt="{{ photo.caption }}"
                      onclick="openLightbox(this.src)">
-
                 {% if photo.caption %}
                     <figcaption>{{ photo.caption }}</figcaption>
                 {% endif %}
-
             </div>
             {% endfor %}
-
         </div>
+
+        {% if post.files.all %}
+        <div class="post_files">
+            {% for f in post.files.all %}
+            <p>📄 <a href="{{ f.file.url }}" download="{{ f.name }}">{{ f.name }}</a> ({{ f.file.size|filesizeformat }})</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
     </article>
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
