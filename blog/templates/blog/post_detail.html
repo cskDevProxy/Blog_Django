@@ -8,7 +8,8 @@
 <main class="glav_post">
     <article class="post">
         <h1>{{ post.title }}</h1>
-        <p class="full_date">{{ post.created_date|date:"d.m.Y h:i" }}</p>
+        <a class="back_link" href="{% url 'index' %}">$ cd ..</a>
+        <p class="full_date"># post #{{ post.id }} · {{ post.created_date|date:"d.m.Y H:i" }} · ~{% widthratio post.text|wordcount 200 1 %} мин чтения</p>
         <div class="full_context">{{ post.text }}</div>
 
         <div class="post_img">
@@ -27,11 +28,27 @@
 
         {% if post.files.all %}
         <div class="post_files">
+            <p class="post_files__cmd">$ ls -l ./files</p>
             {% for f in post.files.all %}
-            <p>📄 <a href="{{ f.file.url }}" download="{{ f.name }}">{{ f.name }}</a> ({{ f.file.size|filesizeformat }})</p>
+            <a class="file_line" href="{{ f.file.url }}" download="{{ f.name }}">
+                <span class="file_line__perm">-rw-r--r--</span>
+                <span class="file_line__name">{{ f.name }}</span>
+                <span class="file_line__size">{{ f.file.size|filesizeformat }}</span>
+            </a>
             {% endfor %}
         </div>
         {% endif %}
+
+        <nav class="post_nav">
+            {% if prev_post %}
+                <a class="post_nav__link" href="{% url 'post_detail' prev_post.id %}">← {{ prev_post.title|truncatewords:4 }}</a>
+            {% else %}
+                <span></span>
+            {% endif %}
+            {% if next_post %}
+                <a class="post_nav__link" href="{% url 'post_detail' next_post.id %}">{{ next_post.title|truncatewords:4 }} →</a>
+            {% endif %}
+        </nav>
 
     </article>
 
@@ -41,5 +58,5 @@
 
 </main>
 
-<script src="{% static 'polls/js/gallery.js' %}"></script>
+<script src="{% static 'blog/js/gallery.js' %}"></script>
 {% endblock %}

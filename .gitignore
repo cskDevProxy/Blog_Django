@@ -1,6 +1,7 @@
-# База данных SQLite
+# База данных 
 db.sqlite3
 *.sqlite3
+dump.json
 
 # Медиафайлы
 media/
@@ -21,6 +22,7 @@ dist/
 venv/
 env/
 ENV/
+.env
 
 # IDE
 .vscode/
@@ -40,3 +42,5 @@ temp/
 
 .env
 local_settings.py
+
+dump.json

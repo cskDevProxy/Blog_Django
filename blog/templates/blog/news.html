@@ -9,12 +9,12 @@
 {% block main %}
 <main class="news">
     <section class="posts">
-        <h2 class="news_str">Новости</h2>
+        <h2 class="posts__title">Новости<span class="cursor"></span></h2>
         {% for new in news %}
 
         <article class="news_card">
             <h4 class="news_title">{{ new.news_text }}</h4>
-            <p class="post-card__date">{{ new.news_date|date:"d.m.y h:i" }}</p>
+            <p class="post-card__date">{{ new.news_date|date:"d.m.y H:i" }}</p>
         </article>
 
         {% endfor %}

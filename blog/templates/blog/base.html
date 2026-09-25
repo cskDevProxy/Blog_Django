@@ -11,7 +11,10 @@
     
 <header class="site-header">  
     <div class="container">    
-        <nav class="menu">      
+        <nav class="menu">
+            <a href="{% url 'index'%}">
+                <img src="{% static 'blog/img/logo.png' %}" alt="Логотип" class="logo">        
+            </a>     
             <a class="menu__link" href="{% url 'new_post' %}">Новые</a>     
             <a class="menu__link" href="{% url 'index'%}">Записи</a>
             <a class="menu__link" href="{% url 'news' %}">Новости</a> 
