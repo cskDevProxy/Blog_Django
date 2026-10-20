@@ -42,5 +42,3 @@ temp/
 
 .env
 local_settings.py
-
-dump.json

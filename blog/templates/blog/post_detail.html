@@ -10,7 +10,17 @@
         <h1>{{ post.title }}</h1>
         <a class="back_link" href="{% url 'index' %}">$ cd ..</a>
         <p class="full_date"># post #{{ post.id }} · {{ post.created_date|date:"d.m.Y H:i" }} · ~{% widthratio post.text|wordcount 200 1 %} мин чтения</p>
+        {% if post.tegs.all %}
+        <div class="post_tags">
+            {% for tag in post.tegs.all %}
+            <a class="post_tag" href="{% url 'index' %}?tag={{ tag.name|urlencode }}">
+                #{{ tag.name }}
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
         <div class="full_context">{{ post.text }}</div>
+        
 
         <div class="post_img">
             {% for photo in post.images.all %}

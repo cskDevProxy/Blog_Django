@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from .models import Post, PostImage, News, PostFile
+from .models import Post, PostImage, News, PostFile, Tegi
+
+
+@admin.register(Tegi)
+class TegiAdmin(admin.ModelAdmin):
+    list_display = ["name"]
+    search_fields = ["name"]
 
 class PostImageInline(admin.TabularInline):    
     model = PostImage    
@@ -14,6 +20,7 @@ class PostFileInline(admin.TabularInline):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):   
     inlines = [PostImageInline, PostFileInline]
+    filter_horizontal = ["tegs"]
 
 @admin.register(PostImage)
 class PostImageAdmin(admin.ModelAdmin):    

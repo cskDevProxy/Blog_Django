@@ -222,6 +222,125 @@ body {
     padding: 6px 2px;
 }
 
+/* layout: sidebar + записи */
+.layout {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 24px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+}
+
+.sidebar {
+    position: sticky;
+    top: 84px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+.sidebar__title {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.tag-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tag-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: var(--text);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 14px;
+    transition: background .2s, border-color .2s, color .2s;
+}
+
+.tag-link:hover {
+    background: rgba(122, 162, 247, .08);
+    border-color: rgba(122, 162, 247, .25);
+    color: var(--accent);
+}
+
+.tag-link.active {
+    background: rgba(122, 162, 247, .12);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.tag-link span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tag-count {
+    flex-shrink: 0;
+    color: var(--muted);
+    font-size: 12px;
+    background: rgba(139, 148, 158, .08);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 1px 7px;
+}
+
+.sidebar__empty {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 6px 2px;
+}
+
+/* внутри grid .glav теряет свои отступы, иначе ломает колонку */
+.layout .glav {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.active-tag {
+    color: var(--accent);
+    font-size: 20px;
+    margin-left: 8px;
+}
+
+.empty-text {
+    color: var(--muted);
+    font-family: var(--mono);
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        position: static;
+        max-height: none;
+    }
+}
+
 /* post_detail.html развёрнутая запись */
 
 .glav_post {
@@ -396,6 +515,27 @@ body {
 
 .post_files a {
     color: var(--accent);
+}
+
+.post_tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 16px;
+}
+.post_tag {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px 10px;
+    text-decoration: none;
+    transition: background .2s, border-color .2s;
+}
+.post_tag:hover {
+    background: rgba(122, 162, 247, .1);
+    border-color: var(--accent);
 }
 
 /* сreator.html создатель */

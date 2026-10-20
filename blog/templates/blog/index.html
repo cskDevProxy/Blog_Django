@@ -3,48 +3,73 @@
 {% block title %}записи{% endblock %}
 
 {% block main %}
-<main class="glav">
-    <section class="posts">
-        <h2 class="posts__title">Записи<span class="cursor"></span></h2>
-        <!-- Карточка записи -->
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="sidebar__title">~/tags $</div>
+        <ul class="tag-list">
+            <li>
+                <a href="{% url 'index' %}"
+                   class="tag-link {% if not selected_tag %}active{% endif %}">
+                    <span>все записи</span>
+                </a>
+            </li>
+            {% for tag in tags %}
+            <li>
+                <a href="{% url 'index_by_tag' tag.name %}"
+                   class="tag-link {% if tag.name == selected_tag %}active{% endif %}">
+                    <span>#{{ tag.name }}</span>
+                    <span class="tag-count">{{ tag.post_count }}</span>
+                </a>
+            </li>
+            {% empty %}
+            <li class="sidebar__empty">Тегов пока нет.</li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <section class="glav">
+        <h1 class="posts__title">
+            записи
+            {% if selected_tag %}<span class="active-tag">#{{ selected_tag }}</span>{% endif %}
+            <span class="cursor"></span>
+        </h1>
+
         {% for post in page_obj %}
         <article class="post-card">
-            <h3 class="post-card__title">{{ post.title }}</h3>
-            <p class="post-card__date">{{ post.created_date|date:"d.m.y H:i" }}</p>
-            <p class="post-card__text">{{ post.text|truncatewords:30 }}</p>
+            <h2 class="post-card__title">
+                <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+            </h2>
+            <div class="post-card__date">{{ post.created_date|date:"d.m.y H:i" }}</div>
+            <div class="post-card__text">{{ post.text|truncatewords:30 }}</div>
             <a class="post-card__link" href="{% url 'post_detail' post.id %}">Читать далее</a>
         </article>
         {% empty %}
-            <p>Записей пока нет.</p>
+        <p class="empty-text">
+            {% if selected_tag %}По тегу #{{ selected_tag }} записей нет.{% else %}Записей пока нет.{% endif %}
+        </p>
         {% endfor %}
-    </section>
 
-
-    {% if page_obj.paginator.num_pages > 1 %}
+        {% if page_obj.paginator.num_pages > 1 %}
         <div class="pagination">
-            
-            <!-- Кнопка "Назад" -->
             {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}">&laquo; Назад</a>
+            <a href="?page={{ page_obj.previous_page_number }}{{ tag_query }}">« Назад</a>
             {% endif %}
-
-            <!-- Список номеров страниц -->
             {% for item in page_window %}
-                {% if item == "…" %}
-                    <span class="pagination__gap">…</span>
+                {% if item == '…' %}
+                <span class="pagination__gap">…</span>
                 {% elif item == page_obj.number %}
-                    <span class="current-page">{{ item }}</span>
+                <span class="current-page">{{ item }}</span>
                 {% else %}
-                    <a href="?page={{ item }}">{{ item }}</a>
+                <a href="?page={{ item }}{{ tag_query }}">{{ item }}</a>
                 {% endif %}
             {% endfor %}
-
-            <!-- Кнопка "Вперед" -->
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Вперед &raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}{{ tag_query }}">Вперед »</a>
             {% endif %}
-
         </div>
-    {% endif %}
-</main>
+        {% endif %}
+    </section>
+
+</div>
 {% endblock %}

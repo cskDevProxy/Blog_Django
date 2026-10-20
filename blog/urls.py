@@ -8,5 +8,6 @@ urlpatterns = [
     path("new_post", views.new_post, name="new_post"),
     path("creator", views.creator, name="creator"),
     path("news", views.news, name="news"),
+    path("tag/<str:tag_id>/", views.index, name="index_by_tag")
 
 ]
